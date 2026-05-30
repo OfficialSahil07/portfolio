@@ -2,12 +2,12 @@
 
 Interactive web portfolio showcasing business intelligence, automated MIS reporting pipelines, and advanced data architecture.
 
-🔗 **Live Site:** [https://YOUR-GITHUB-USERNAME.github.io/portfolio](https://YOUR-GITHUB-USERNAME.github.io/portfolio)
+🔗 **Live Site:** [https://officialsahil07.github.io/portfolio](https://officialsahil07.github.io/portfolio)
 
 ## 🛠️ Technical Stack
 * **Data Visualization:** Power BI, Tableau
 * **Database Management:** SQL (Joins, Window Functions, Subqueries)
-* **MIS Automation:** Excel, Power Query, DAX
+* **MIS Automation:** Excel, Power Query
 * **Frontend Interface:** HTML5, CSS3 (Glassmorphism design), JavaScript (tsParticles, Typed.js)
 
 ## 📈 Featured Showcases

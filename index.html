@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sahil Shaikh | Premium Data Analyst Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<style>
+:root {
+    --bg-primary: #030712;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-color: #38bdf8;
+    --card-bg: rgba(255, 255, 255, 0.02);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --border-color: rgba(255, 255, 255, 0.06);
+    --nav-bg: rgba(3, 7, 18, 0.5);
+}
+
+.light-mode {
+    --bg-primary: #f1f5f9;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --accent-color: #4f46e5;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(15, 23, 42, 0.08);
+    --nav-bg: rgba(241, 245, 249, 0.7);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+html{scroll-behavior:smooth}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    position: relative;
+    transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease;
+}
+
+/* Fluid Moving Background Mesh */
+.bg-mesh {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -3;
+    background: 
+        radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.1) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(20, 184, 166, 0.12) 0px, transparent 50%);
+    filter: blur(40px);
+    opacity: 0.8;
+    animation: meshMotion 25s ease infinite alternate;
+    transition: background 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.light-mode .bg-mesh { 
+    background: 
+        radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.22) 0px, transparent 60%),
+        radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.18) 0px, transparent 60%),
+        radial-gradient(at 100% 100%, rgba(20, 184, 166, 0.15) 0px, transparent 60%),
+        radial-gradient(at 0% 100%, rgba(14, 165, 233, 0.15) 0px, transparent 60%);
+}
+
+@keyframes meshMotion {
+    0% { transform: scale(1) translate(0px, 0px); }
+    50% { transform: scale(1.1) translate(2% , 3%); }
+    100% { transform: scale(1) translate(-1%, -1%); }
+}
+
+#particles-js {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Cursor Glow */
+.cursor-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.07) 0%, transparent 65%);
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none;
+    will-change: transform;
+    transition: background 0.5s ease;
+}
+.light-mode .cursor-glow { background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 65%); }
+
+/* Global Semantic Layouts */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 999;
+    transition: background 0.5s ease, border-color 0.5s ease;
+}
+nav a { text-decoration: none; color: var(--text-secondary); margin: 0 15px; font-weight: 500; transition: color 0.3s ease; }
+nav a:hover { color: var(--accent-color); }
+
+.hero { min-height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; padding: 80px 20px 20px; }
+.profile { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 4px solid var(--border-color); box-shadow: 0 0 40px rgba(56, 189, 248, 0.15); transition: border-color 0.5s; }
+.light-mode .profile { border-color: rgba(79, 70, 229, 0.3); box-shadow: 0 0 40px rgba(79, 70, 229, 0.1); }
+
+.glass { 
+    background: var(--glass-bg); 
+    backdrop-filter: blur(16px); 
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color); 
+    border-radius: 24px; padding: 40px; 
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.15);
+}
+
+.container { max-width: 1200px; margin: auto; padding: 80px 20px; }
+h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; font-weight: 700; letter-spacing: -0.5px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+/* Structural Cards */
+.card { 
+    background: var(--card-bg); 
+    backdrop-filter: blur(16px); 
+    -webkit-backdrop-filter: blur(16px);
+    padding: 35px; border-radius: 20px; 
+    border: 1px solid var(--border-color); 
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.card:hover { 
+    transform: translateY(-8px); 
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 40px rgba(56, 189, 248, 0.1); 
+}
+.light-mode .card:hover { box-shadow: 0 20px 40px rgba(99, 102, 241, 0.08); }
+
+/* Responsive Power BI Viewport Engine */
+.powerbi-showroom {
+    margin-top: 45px;
+    padding: 25px;
+}
+.powerbi-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Standard 16:9 Analytics Aspect Ratio Matrix */
+    height: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.1);
+}
+.powerbi-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Interface Interactions */
+.btn { 
+    display: inline-block; margin: 8px; padding: 12px 26px; border-radius: 12px; 
+    background: linear-gradient(135deg,#38bdf8,#6366f1); color:#fff; 
+    text-decoration:none; font-weight: 500; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4); }
+.stats .num { font-size: 55px; color: var(--accent-color); font-weight: 700; margin-bottom: 5px; transition: color 0.5s; }
+.card p { color: var(--text-secondary); transition: color 0.4s; }
+
+.theme-btn { padding: 8px 14px; border: 1px solid var(--border-color); background: rgba(255,255,255,0.02); color: var(--text-primary); border-radius: 10px; cursor: pointer; transition: 0.3s; }
+.theme-btn:hover { background: rgba(255,255,255,0.08); }
+
+.tag { display: inline-block; padding: 8px 16px; margin: 6px; background: rgba(56, 189, 248, 0.06); border: 1px solid var(--border-color); border-radius: 999px; font-size: 0.9rem; color: var(--accent-color); font-weight: 500; transition: all 0.4s; }
+
+footer { text-align: center; padding: 40px; background: var(--nav-bg); border-top: 1px solid var(--border-color); transition: background 0.5s, border-color 0.5s; }
+</style>
+</head>
+<body>
+
+<div class="bg-mesh"></div>
+<div id="particles-js"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<nav>
+<h3 style="font-weight:600; letter-spacing:-0.5px;">Sahil Shaikh</h3>
+<div>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+<button id="themeToggle" class="theme-btn" aria-label="Toggle Interface Theme">🌙</button>
+</div>
+</nav>
+
+<section class="hero">
+<div class="glass" data-aos="zoom-in" style="max-width: 650px; width: 100%;">
+<img src="assets/profile.jpg" class="profile" alt="Sahil Shaikh Portrait">
+<h1 style="margin-top:25px; font-size: 2.5rem; font-weight:700; letter-spacing:-1px;">Sahil Sallauddin Shaikh</h1>
+<div style="height: 35px; margin-top: 5px; display: flex; justify-content: center; align-items: center;">
+    <h3 style="color: var(--accent-color); font-weight:500; transition: color 0.5s;" id="typing-wrapper"><span id="typing"></span></h3>
+</div>
+<p style="margin:20px 0 30px 0; font-size: 1.1rem; color: var(--text-secondary); transition: color 0.4s;">Data-driven Professional & MIS Executive based out of Pune, Maharashtra.</p>
+<div>
+<a class="btn" href="assets/resume.pdf">Download Resume</a>
+<a class="btn" href="https://www.linkedin.com/in/sahil-shaikh-478912238/" target="_blank" rel="noopener">LinkedIn</a>
+<a class="btn" href="https://github.com/OfficialSahil07" target="_blank" rel="noopener">GitHub</a>
+</div>
+</div>
+</section>
+
+<section id="about" class="container">
+<h2 data-aos="fade-up">About Me</h2>
+<div class="glass" data-aos="fade-up" style="font-size:1.1rem; line-height:1.8; max-width: 850px; margin: auto; text-align: center; color: var(--text-secondary);">
+Detail-oriented Data Analyst and MIS Executive specializing in Power BI, SQL, Advanced Excel, Tableau, and automated dashboard development. Passionate about translating messy, complex datasets into functional, strategic business insights.
+</div>
+</section>
+
+<section id="skills" class="container">
+<h2 data-aos="fade-up">Technical Toolbox</h2>
+<div class="glass" data-aos="fade-up" style="text-align: center; max-width: 750px; margin: auto;">
+<span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Excel</span>
+<span class="tag">Tableau</span><span class="tag">Power Query</span><span class="tag">DAX</span>
+</div>
+</section>
+
+<section class="container stats">
+<h2 data-aos="fade-up">Key Benchmarks</h2>
+<div class="grid">
+<div class="card" style="text-align: center;"><div class="num" data-target="15">0</div><p>End-to-End Projects</p></div>
+<div class="card" style="text-align: center;"><div class="num" data-target="99">0</div><p>Data Accuracy Rate %</p></div>
+<div class="card" style="text-align: center;"><div class="num" data-target="15">0</div><p>Reporting Speed Improv %</p></div>
+</div>
+</section>
+
+<section id="projects" class="container">
+<h2 data-aos="fade-up">Featured Engineering</h2>
+<div class="grid">
+<div class="card" data-aos="flip-left"><h3 style="margin-bottom:12px;">Power BI Enterprise Dashboard</h3><p style="font-size:0.95rem; line-height:1.6;">Interactive, real-time KPI structures mapping operational metrics and complex cross-functional business intelligence tracking.</p></div>
+<div class="card" data-aos="flip-left"><h3 style="margin-bottom:12px;">Advanced SQL Analytics</h3><p style="font-size:0.95rem; line-height:1.6;">Mining clean transactional layers using structured subqueries, analytical windows functions, optimization joins, and deep aggregations.</p></div>
+<div class="card" data-aos="flip-left"><h3 style="margin-bottom:12px;">Automated MIS Reporting</h3><p style="font-size:0.95rem; line-height:1.6;">Engineered rapid ETL data-pipelines combining Power Query routines and complex structural logic layers inside Microsoft Excel.</p></div>
+</div>
+
+<!-- Integrated Interactive Showroom Container Component -->
+<div class="glass powerbi-showroom" data-aos="fade-up">
+    <h3 style="margin-bottom: 20px; text-align: left; font-weight: 600; font-size: 1.4rem;">📊 Featured Project: Walmart Analysis Dashboard</h3>
+    <div class="powerbi-wrapper">
+        <iframe title="walmart analysis 10-07-23" src="https://app.powerbi.com/reportEmbed?reportId=77c861a2-35f4-4c78-b493-465d7407f5ef&autoAuth=true&ctid=a612d5dc-71ee-4940-badc-796703559cf1&actionBarEnabled=true" allowFullScreen="true"></iframe>
+    </div>
+</div>
+</section>
+
+<section id="contact" class="container">
+<h2 data-aos="fade-up">Let's Connect</h2>
+<div class="glass" data-aos="zoom-in" style="max-width: 550px; width: 100%; margin: auto; text-align: center;">
+<p style="font-size: 1.1rem; margin-bottom: 12px; color: var(--text-primary);">📧 Email: <a href="mailto:sahilshaikh787513@gmail.com" style="color: var(--accent-color); text-decoration:none; font-weight: 500; transition: color 0.4s;">sahilshaikh787513@gmail.com</a></p>
+<p style="font-size: 1.1rem; color: var(--text-primary);">📞 Phone: <span style="color: var(--accent-color); font-weight: 500; transition: color 0.4s;">+91 7875134125</span></p>
+</div>
+</section>
+
+<footer>
+<h3 style="font-weight: 600;">SiteNova Studio</h3>
+<p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 5px; transition: color 0.4s;">Designed & Developed by Sahil Shaikh</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:1000,once:true});
+
+new Typed('#typing',{
+    strings:['Power BI Developer','Data Analyst','MIS Executive','Dashboard Specialist'],
+    typeSpeed:50,
+    backSpeed:30,
+    loop:true
+});
+
+const darkParticlesConfig = {
+    particles: {
+        number: { value: 60, density: { enable: true, value_area: 1000 } },
+        color: { value: "#38bdf8" },
+        shape: { type: "circle" },
+        opacity: { value: 0.25, random: true },
+        size: { value: 2, random: true },
+        links: { enable: true, distance: 140, color: "#38bdf8", opacity: 0.12, width: 1 },
+        move: { enable: true, speed: 0.6, direction: "none", random: true, straight: false, out_mode: "out" }
+    },
+    interactivity: {
+        detect_on: "window",
+        events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } },
+        modes: { grab: { distance: 160, line_linked: { opacity: 0.35 } } }
+    }
+};
+
+const lightParticlesConfig = {
+    ...darkParticlesConfig,
+    particles: {
+        ...darkParticlesConfig.particles,
+        color: { value: "#4f46e5" },
+        links: { ...darkParticlesConfig.particles.links, color: "#4f46e5", opacity: 0.1 }
+    }
+};
+
+tsParticles.load("particles-js", darkParticlesConfig);
+
+const toggleBtn = document.getElementById('themeToggle');
+toggleBtn.onclick = () => {
+    document.body.classList.toggle('light-mode');
+    const isLight = document.body.classList.contains('light-mode');
+    toggleBtn.textContent = isLight ? '☀️' : '🌙';
+    tsParticles.load("particles-js", isLight ? lightParticlesConfig : darkParticlesConfig);
+};
+
+const glow = document.getElementById('cursorGlow');
+let mouseX = 0, mouseY = 0;
+let currentX = 0, currentY = 0;
+
+window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+function updateGlowPosition() {
+    currentX += (mouseX - currentX) * 0.15;
+    currentY += (mouseY - currentY) * 0.15;
+    glow.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
+    requestAnimationFrame(updateGlowPosition);
+}
+requestAnimationFrame(updateGlowPosition);
+
+const observerOptions = { threshold: 0.2, rootMargin: "0px" };
+const runCountUp = (el) => {
+    let target = +el.dataset.target, current = 0;
+    let increment = target / 40;
+    let updateCount = () => {
+        current += increment;
+        if(current < target) {
+            el.textContent = Math.ceil(current);
+            setTimeout(updateCount, 30);
+        } else {
+            el.textContent = target;
+        }
+    };
+    updateCount();
+};
+
+const statsObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            entry.target.querySelectorAll('.num').forEach(el => runCountUp(el));
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+statsObserver.observe(document.querySelector('.stats'));
+</script>
+</body>
+</html>

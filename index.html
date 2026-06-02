@@ -190,6 +190,30 @@ h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; font-weight: 70
 .tag { display: inline-block; padding: 8px 16px; margin: 6px; background: rgba(56, 189, 248, 0.06); border: 1px solid var(--border-color); border-radius: 999px; font-size: 0.9rem; color: var(--accent-color); font-weight: 500; transition: all 0.4s; }
 
 footer { text-align: center; padding: 40px; background: var(--nav-bg); border-top: 1px solid var(--border-color); transition: background 0.5s, border-color 0.5s; }
+.footer-brand{
+
+text-decoration:none;
+
+display:inline-block;
+
+transition:.4s;
+}
+
+.footer-brand p{
+
+color:#ffffff;
+
+font-size:14px;
+}
+
+.footer-brand:hover{
+
+transform:translateY(-5px) scale(1.05);
+
+filter:drop-shadow(
+0 0 15px #46FADB
+);
+}
 </style>
 </head>
 <body>
@@ -274,8 +298,21 @@ Detail-oriented Data Analyst and MIS Executive specializing in Power BI, SQL, Ad
 </section>
 
 <footer>
-<h3 style="font-weight: 600;">Sahil Shaikh</h3>
-<p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 5px; transition: color 0.4s;">Designed & Developed by SiteNova Studio</p>
+
+<a
+href="https://sitenovastudio.netlify.app/"
+target="_blank"
+class="footer-brand">
+
+<p>
+© 2026 SiteNova Studio
+</p>
+
+</a>
+
+<br>
+
+
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
@@ -293,7 +330,7 @@ new Typed('#typing',{
 
 const darkParticlesConfig = {
     particles: {
-        number: { value: 60, density: { enable: true, value_area: 1000 } },
+        number: { value: 70, density: { enable: true, value_area: 1000 } },
         color: { value: "#38bdf8" },
         shape: { type: "circle" },
         opacity: { value: 0.25, random: true },
@@ -370,6 +407,7 @@ const statsObserver = new IntersectionObserver((entries, observer) => {
 }, observerOptions);
 
 statsObserver.observe(document.querySelector('.stats'));
+
 </script>
 </body>
 </html>
